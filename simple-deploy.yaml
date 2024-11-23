@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  simple-web
+  labels:
+    app:  simple-web
+spec:
+  selector:
+    matchLabels:
+      app: simple-web
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: simple-web
+    spec:
+      containers:
+        - name: simple-web
+          image: dangtong/simple-web
+          ports:
+            - containerPort:  80
+              name: simple-web
+      restartPolicy: Always
